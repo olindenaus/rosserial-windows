@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>16.0</VCProjectVersion>
+    <ProjectGuid>{1D087AE3-0F43-4DA0-B4C9-CA8775303670}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>rosserialhelloworld</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v142</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>"../ros_lib";$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>../ros_lib;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>../ros_lib</AdditionalUsingDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\ros_lib\duration.cpp" />
+    <ClCompile Include="..\ros_lib\time.cpp" />
+    <ClCompile Include="..\ros_lib\WindowsSocket.cpp" />
+    <ClCompile Include="rosserial_hello_world.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\ros_lib\actionlib\TestAction.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestActionGoal.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestActionResult.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestFeedback.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestGoal.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestRequestAction.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestRequestActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestRequestActionGoal.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestRequestActionResult.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestRequestFeedback.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestRequestGoal.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestRequestResult.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TestResult.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TwoIntsAction.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TwoIntsActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TwoIntsActionGoal.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TwoIntsActionResult.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TwoIntsFeedback.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TwoIntsGoal.h" />
+    <ClInclude Include="..\ros_lib\actionlib\TwoIntsResult.h" />
+    <ClInclude Include="..\ros_lib\actionlib_msgs\GoalID.h" />
+    <ClInclude Include="..\ros_lib\actionlib_msgs\GoalStatus.h" />
+    <ClInclude Include="..\ros_lib\actionlib_msgs\GoalStatusArray.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\AveragingAction.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\AveragingActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\AveragingActionGoal.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\AveragingActionResult.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\AveragingFeedback.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\AveragingGoal.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\AveragingResult.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\FibonacciAction.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\FibonacciActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\FibonacciActionGoal.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\FibonacciActionResult.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\FibonacciFeedback.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\FibonacciGoal.h" />
+    <ClInclude Include="..\ros_lib\actionlib_tutorials\FibonacciResult.h" />
+    <ClInclude Include="..\ros_lib\bond\Constants.h" />
+    <ClInclude Include="..\ros_lib\bond\Status.h" />
+    <ClInclude Include="..\ros_lib\controller_manager_msgs\ControllersStatistics.h" />
+    <ClInclude Include="..\ros_lib\controller_manager_msgs\ControllerState.h" />
+    <ClInclude Include="..\ros_lib\controller_manager_msgs\ControllerStatistics.h" />
+    <ClInclude Include="..\ros_lib\controller_manager_msgs\HardwareInterfaceResources.h" />
+    <ClInclude Include="..\ros_lib\controller_manager_msgs\ListControllers.h" />
+    <ClInclude Include="..\ros_lib\controller_manager_msgs\ListControllerTypes.h" />
+    <ClInclude Include="..\ros_lib\controller_manager_msgs\LoadController.h" />
+    <ClInclude Include="..\ros_lib\controller_manager_msgs\ReloadControllerLibraries.h" />
+    <ClInclude Include="..\ros_lib\controller_manager_msgs\SwitchController.h" />
+    <ClInclude Include="..\ros_lib\controller_manager_msgs\UnloadController.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\FollowJointTrajectoryAction.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\FollowJointTrajectoryActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\FollowJointTrajectoryActionGoal.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\FollowJointTrajectoryActionResult.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\FollowJointTrajectoryFeedback.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\FollowJointTrajectoryGoal.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\FollowJointTrajectoryResult.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\GripperCommand.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\GripperCommandAction.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\GripperCommandActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\GripperCommandActionGoal.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\GripperCommandActionResult.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\GripperCommandFeedback.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\GripperCommandGoal.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\GripperCommandResult.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointControllerState.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointJog.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointTolerance.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointTrajectoryAction.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointTrajectoryActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointTrajectoryActionGoal.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointTrajectoryActionResult.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointTrajectoryControllerState.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointTrajectoryFeedback.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointTrajectoryGoal.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\JointTrajectoryResult.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\PidState.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\PointHeadAction.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\PointHeadActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\PointHeadActionGoal.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\PointHeadActionResult.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\PointHeadFeedback.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\PointHeadGoal.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\PointHeadResult.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\QueryCalibrationState.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\QueryTrajectoryState.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\SingleJointPositionAction.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\SingleJointPositionActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\SingleJointPositionActionGoal.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\SingleJointPositionActionResult.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\SingleJointPositionFeedback.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\SingleJointPositionGoal.h" />
+    <ClInclude Include="..\ros_lib\control_msgs\SingleJointPositionResult.h" />
+    <ClInclude Include="..\ros_lib\control_toolbox\SetPidGains.h" />
+    <ClInclude Include="..\ros_lib\diagnostic_msgs\AddDiagnostics.h" />
+    <ClInclude Include="..\ros_lib\diagnostic_msgs\DiagnosticArray.h" />
+    <ClInclude Include="..\ros_lib\diagnostic_msgs\DiagnosticStatus.h" />
+    <ClInclude Include="..\ros_lib\diagnostic_msgs\KeyValue.h" />
+    <ClInclude Include="..\ros_lib\diagnostic_msgs\SelfTest.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\BoolParameter.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\Config.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\ConfigDescription.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\DoubleParameter.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\Group.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\GroupState.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\IntParameter.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\ParamDescription.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\Reconfigure.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\SensorLevels.h" />
+    <ClInclude Include="..\ros_lib\dynamic_reconfigure\StrParameter.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\ApplyBodyWrench.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\ApplyJointEffort.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\BodyRequest.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\ContactsState.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\ContactState.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\DeleteLight.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\DeleteModel.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\GetJointProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\GetLightProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\GetLinkProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\GetLinkState.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\GetModelProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\GetModelState.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\GetPhysicsProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\GetWorldProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\JointRequest.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\LinkState.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\LinkStates.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\ModelState.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\ModelStates.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\ODEJointProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\ODEPhysics.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\SetJointProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\SetJointTrajectory.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\SetLightProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\SetLinkProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\SetLinkState.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\SetModelConfiguration.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\SetModelState.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\SetPhysicsProperties.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\SpawnModel.h" />
+    <ClInclude Include="..\ros_lib\gazebo_msgs\WorldState.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Accel.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\AccelStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\AccelWithCovariance.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\AccelWithCovarianceStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Inertia.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\InertiaStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Point.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Point32.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\PointStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Polygon.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\PolygonStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Pose.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Pose2D.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\PoseArray.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\PoseStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\PoseWithCovariance.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\PoseWithCovarianceStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Quaternion.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\QuaternionStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Transform.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\TransformStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Twist.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\TwistStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\TwistWithCovariance.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\TwistWithCovarianceStamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Vector3.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Vector3Stamped.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\Wrench.h" />
+    <ClInclude Include="..\ros_lib\geometry_msgs\WrenchStamped.h" />
+    <ClInclude Include="..\ros_lib\laser_assembler\AssembleScans.h" />
+    <ClInclude Include="..\ros_lib\laser_assembler\AssembleScans2.h" />
+    <ClInclude Include="..\ros_lib\map_msgs\GetMapROI.h" />
+    <ClInclude Include="..\ros_lib\map_msgs\GetPointMap.h" />
+    <ClInclude Include="..\ros_lib\map_msgs\GetPointMapROI.h" />
+    <ClInclude Include="..\ros_lib\map_msgs\OccupancyGridUpdate.h" />
+    <ClInclude Include="..\ros_lib\map_msgs\PointCloud2Update.h" />
+    <ClInclude Include="..\ros_lib\map_msgs\ProjectedMap.h" />
+    <ClInclude Include="..\ros_lib\map_msgs\ProjectedMapInfo.h" />
+    <ClInclude Include="..\ros_lib\map_msgs\ProjectedMapsInfo.h" />
+    <ClInclude Include="..\ros_lib\map_msgs\SaveMap.h" />
+    <ClInclude Include="..\ros_lib\map_msgs\SetMapProjections.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\GetMap.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\GetMapAction.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\GetMapActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\GetMapActionGoal.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\GetMapActionResult.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\GetMapFeedback.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\GetMapGoal.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\GetMapResult.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\GetPlan.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\GridCells.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\MapMetaData.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\OccupancyGrid.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\Odometry.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\Path.h" />
+    <ClInclude Include="..\ros_lib\nav_msgs\SetMap.h" />
+    <ClInclude Include="..\ros_lib\nodelet\NodeletList.h" />
+    <ClInclude Include="..\ros_lib\nodelet\NodeletLoad.h" />
+    <ClInclude Include="..\ros_lib\nodelet\NodeletUnload.h" />
+    <ClInclude Include="..\ros_lib\pcl_msgs\ModelCoefficients.h" />
+    <ClInclude Include="..\ros_lib\pcl_msgs\PointIndices.h" />
+    <ClInclude Include="..\ros_lib\pcl_msgs\PolygonMesh.h" />
+    <ClInclude Include="..\ros_lib\pcl_msgs\Vertices.h" />
+    <ClInclude Include="..\ros_lib\polled_camera\GetPolledImage.h" />
+    <ClInclude Include="..\ros_lib\ros.h" />
+    <ClInclude Include="..\ros_lib\roscpp\Empty.h" />
+    <ClInclude Include="..\ros_lib\roscpp\GetLoggers.h" />
+    <ClInclude Include="..\ros_lib\roscpp\Logger.h" />
+    <ClInclude Include="..\ros_lib\roscpp\SetLoggerLevel.h" />
+    <ClInclude Include="..\ros_lib\roscpp_tutorials\TwoInts.h" />
+    <ClInclude Include="..\ros_lib\rosgraph_msgs\Clock.h" />
+    <ClInclude Include="..\ros_lib\rosgraph_msgs\Log.h" />
+    <ClInclude Include="..\ros_lib\rosgraph_msgs\TopicStatistics.h" />
+    <ClInclude Include="..\ros_lib\rospy_tutorials\AddTwoInts.h" />
+    <ClInclude Include="..\ros_lib\rospy_tutorials\BadTwoInts.h" />
+    <ClInclude Include="..\ros_lib\rospy_tutorials\Floats.h" />
+    <ClInclude Include="..\ros_lib\rospy_tutorials\HeaderString.h" />
+    <ClInclude Include="..\ros_lib\rosserial_msgs\Log.h" />
+    <ClInclude Include="..\ros_lib\rosserial_msgs\RequestMessageInfo.h" />
+    <ClInclude Include="..\ros_lib\rosserial_msgs\RequestParam.h" />
+    <ClInclude Include="..\ros_lib\rosserial_msgs\RequestServiceInfo.h" />
+    <ClInclude Include="..\ros_lib\rosserial_msgs\TopicInfo.h" />
+    <ClInclude Include="..\ros_lib\ros\duration.h" />
+    <ClInclude Include="..\ros_lib\ros\msg.h" />
+    <ClInclude Include="..\ros_lib\ros\node_handle.h" />
+    <ClInclude Include="..\ros_lib\ros\publisher.h" />
+    <ClInclude Include="..\ros_lib\ros\service_client.h" />
+    <ClInclude Include="..\ros_lib\ros\service_server.h" />
+    <ClInclude Include="..\ros_lib\ros\subscriber.h" />
+    <ClInclude Include="..\ros_lib\ros\time.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\BatteryState.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\CameraInfo.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\ChannelFloat32.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\CompressedImage.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\FluidPressure.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\Illuminance.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\Image.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\Imu.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\JointState.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\Joy.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\JoyFeedback.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\JoyFeedbackArray.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\LaserEcho.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\LaserScan.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\MagneticField.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\MultiDOFJointState.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\MultiEchoLaserScan.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\NavSatFix.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\NavSatStatus.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\PointCloud.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\PointCloud2.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\PointField.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\Range.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\RegionOfInterest.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\RelativeHumidity.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\SetCameraInfo.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\Temperature.h" />
+    <ClInclude Include="..\ros_lib\sensor_msgs\TimeReference.h" />
+    <ClInclude Include="..\ros_lib\shape_msgs\Mesh.h" />
+    <ClInclude Include="..\ros_lib\shape_msgs\MeshTriangle.h" />
+    <ClInclude Include="..\ros_lib\shape_msgs\Plane.h" />
+    <ClInclude Include="..\ros_lib\shape_msgs\SolidPrimitive.h" />
+    <ClInclude Include="..\ros_lib\smach_msgs\SmachContainerInitialStatusCmd.h" />
+    <ClInclude Include="..\ros_lib\smach_msgs\SmachContainerStatus.h" />
+    <ClInclude Include="..\ros_lib\smach_msgs\SmachContainerStructure.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Bool.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Byte.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\ByteMultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Char.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\ColorRGBA.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Duration.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Empty.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Float32.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Float32MultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Float64.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Float64MultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Header.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Int16.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Int16MultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Int32.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Int32MultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Int64.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Int64MultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Int8.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Int8MultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\MultiArrayDimension.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\MultiArrayLayout.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\String.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\Time.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\UInt16.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\UInt16MultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\UInt32.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\UInt32MultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\UInt64.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\UInt64MultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\UInt8.h" />
+    <ClInclude Include="..\ros_lib\std_msgs\UInt8MultiArray.h" />
+    <ClInclude Include="..\ros_lib\std_srvs\Empty.h" />
+    <ClInclude Include="..\ros_lib\std_srvs\SetBool.h" />
+    <ClInclude Include="..\ros_lib\std_srvs\Trigger.h" />
+    <ClInclude Include="..\ros_lib\stereo_msgs\DisparityImage.h" />
+    <ClInclude Include="..\ros_lib\tf2_msgs\FrameGraph.h" />
+    <ClInclude Include="..\ros_lib\tf2_msgs\LookupTransformAction.h" />
+    <ClInclude Include="..\ros_lib\tf2_msgs\LookupTransformActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\tf2_msgs\LookupTransformActionGoal.h" />
+    <ClInclude Include="..\ros_lib\tf2_msgs\LookupTransformActionResult.h" />
+    <ClInclude Include="..\ros_lib\tf2_msgs\LookupTransformFeedback.h" />
+    <ClInclude Include="..\ros_lib\tf2_msgs\LookupTransformGoal.h" />
+    <ClInclude Include="..\ros_lib\tf2_msgs\LookupTransformResult.h" />
+    <ClInclude Include="..\ros_lib\tf2_msgs\TF2Error.h" />
+    <ClInclude Include="..\ros_lib\tf2_msgs\TFMessage.h" />
+    <ClInclude Include="..\ros_lib\tf\FrameGraph.h" />
+    <ClInclude Include="..\ros_lib\tf\tf.h" />
+    <ClInclude Include="..\ros_lib\tf\tfMessage.h" />
+    <ClInclude Include="..\ros_lib\tf\transform_broadcaster.h" />
+    <ClInclude Include="..\ros_lib\theora_image_transport\Packet.h" />
+    <ClInclude Include="..\ros_lib\topic_tools\DemuxAdd.h" />
+    <ClInclude Include="..\ros_lib\topic_tools\DemuxDelete.h" />
+    <ClInclude Include="..\ros_lib\topic_tools\DemuxList.h" />
+    <ClInclude Include="..\ros_lib\topic_tools\DemuxSelect.h" />
+    <ClInclude Include="..\ros_lib\topic_tools\MuxAdd.h" />
+    <ClInclude Include="..\ros_lib\topic_tools\MuxDelete.h" />
+    <ClInclude Include="..\ros_lib\topic_tools\MuxList.h" />
+    <ClInclude Include="..\ros_lib\topic_tools\MuxSelect.h" />
+    <ClInclude Include="..\ros_lib\trajectory_msgs\JointTrajectory.h" />
+    <ClInclude Include="..\ros_lib\trajectory_msgs\JointTrajectoryPoint.h" />
+    <ClInclude Include="..\ros_lib\trajectory_msgs\MultiDOFJointTrajectory.h" />
+    <ClInclude Include="..\ros_lib\trajectory_msgs\MultiDOFJointTrajectoryPoint.h" />
+    <ClInclude Include="..\ros_lib\turtlesim\Color.h" />
+    <ClInclude Include="..\ros_lib\turtlesim\Kill.h" />
+    <ClInclude Include="..\ros_lib\turtlesim\Pose.h" />
+    <ClInclude Include="..\ros_lib\turtlesim\SetPen.h" />
+    <ClInclude Include="..\ros_lib\turtlesim\Spawn.h" />
+    <ClInclude Include="..\ros_lib\turtlesim\TeleportAbsolute.h" />
+    <ClInclude Include="..\ros_lib\turtlesim\TeleportRelative.h" />
+    <ClInclude Include="..\ros_lib\turtle_actionlib\ShapeAction.h" />
+    <ClInclude Include="..\ros_lib\turtle_actionlib\ShapeActionFeedback.h" />
+    <ClInclude Include="..\ros_lib\turtle_actionlib\ShapeActionGoal.h" />
+    <ClInclude Include="..\ros_lib\turtle_actionlib\ShapeActionResult.h" />
+    <ClInclude Include="..\ros_lib\turtle_actionlib\ShapeFeedback.h" />
+    <ClInclude Include="..\ros_lib\turtle_actionlib\ShapeGoal.h" />
+    <ClInclude Include="..\ros_lib\turtle_actionlib\ShapeResult.h" />
+    <ClInclude Include="..\ros_lib\turtle_actionlib\Velocity.h" />
+    <ClInclude Include="..\ros_lib\visualization_msgs\ImageMarker.h" />
+    <ClInclude Include="..\ros_lib\visualization_msgs\InteractiveMarker.h" />
+    <ClInclude Include="..\ros_lib\visualization_msgs\InteractiveMarkerControl.h" />
+    <ClInclude Include="..\ros_lib\visualization_msgs\InteractiveMarkerFeedback.h" />
+    <ClInclude Include="..\ros_lib\visualization_msgs\InteractiveMarkerInit.h" />
+    <ClInclude Include="..\ros_lib\visualization_msgs\InteractiveMarkerPose.h" />
+    <ClInclude Include="..\ros_lib\visualization_msgs\InteractiveMarkerUpdate.h" />
+    <ClInclude Include="..\ros_lib\visualization_msgs\Marker.h" />
+    <ClInclude Include="..\ros_lib\visualization_msgs\MarkerArray.h" />
+    <ClInclude Include="..\ros_lib\visualization_msgs\MenuEntry.h" />
+    <ClInclude Include="..\ros_lib\WindowsSocket.h" />
+    <ClInclude Include="stdafx.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

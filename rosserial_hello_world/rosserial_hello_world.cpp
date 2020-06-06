@@ -22,65 +22,73 @@
 // rosserial_hello_world.cpp : Example of sending command velocities from Windows using rosserial
 //
 #include <string>
+#include <iostream>
 #include <stdio.h>
 #include <chrono>
 #include "ros.h"
+#include <ros/time.h>
 #include <geometry_msgs/Twist.h>
+#include <geometry_msgs/PoseStamped.h>
+#include <geometry_msgs/PoseArray.h>
 #include <geometry_msgs/PoseWithCovarianceStamped.h>
+#include <tf/tf.h>
 #include <tchar.h>
 #include <windows.h>
+#include "TrajectoryGenerator.h"
 
 using std::string;
 
 void estimated_pose_callback(const geometry_msgs::PoseWithCovarianceStamped& pose)
- {
-       printf("Received pose %f, %f, %f\n", pose.pose.pose.position.x,
-                   pose.pose.pose.position.y, pose.pose.pose.position.z);
- }
+{
+	printf("Received pose %f, %f, %f\n", pose.pose.pose.position.x,
+		pose.pose.pose.position.y, pose.pose.pose.position.z);
+}
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-    ros::NodeHandle nh;
-    char* ros_master = const_cast<char*>("192.168.0.15:11411");
+	ros::NodeHandle nh;
+	char* ros_master = const_cast<char*>("192.168.0.15:11411");
 
-    printf("Connecting to server at %s\n", ros_master);
-    nh.initNode(ros_master);
+	printf("Connecting to server at %s\n", ros_master);
+	nh.initNode(ros_master);
 
-    /*SENDING*/
-    printf("Advertising cmd_vel message\n");
-    geometry_msgs::Twist twist_msg;
-    ros::Publisher cmd_vel_pub("cmd_vel", &twist_msg);
-    nh.advertise(cmd_vel_pub);
+	/*SENDING*/
+	printf("Advertising cmd_vel message\n");
+	RobotPosition robotPosition;
+	geometry_msgs::PoseStamped poseStamped;
+	geometry_msgs::Pose pose;
+	geometry_msgs::PoseArray poseArray;
+	//ros::Publisher cmd_vel_pub("husky_velocity_controller/cmd_vel", &box_marker);
+	ros::Publisher cmd_vel_pub("position", &poseArray);
+	ros::Subscriber <geometry_msgs::PoseWithCovarianceStamped> poseSub("estimated_pose", &estimated_pose_callback);
+	nh.subscribe(poseSub);
+	//ros::Publisher cmd_vel_pub("cmd_vel", &twist_msg);
+	nh.advertise(cmd_vel_pub);
+	printf("Go robot go!\n");
+	int sleepTimeMillis = 10;
+	double timeElapsed = 0;
+	poseArray.poses_length = 1;
+	int i = 0;
+	while (1)
+	{
+		robotPosition = getTrajectoryPoint(timeElapsed);
+		timeElapsed += sleepTimeMillis;
+		pose.position.x = robotPosition.x;
+		pose.position.y = robotPosition.y;
+		pose.position.z = robotPosition.z;
+		pose.orientation = tf::createQuaternionFromYaw(robotPosition.yaw);
+		poseArray.header.frame_id = "map";
+		geometry_msgs::Pose* poses = new geometry_msgs::Pose[1];
+		poses[0] = pose;
+		poseArray.poses = poses;		
 
-    /*RECEIVING*/
-    ros::Subscriber < geometry_msgs::PoseWithCovarianceStamped > poseSub("estimated_pose", &estimated_pose_callback);
-    nh.subscribe(poseSub);
+		cmd_vel_pub.publish(&poseArray);
+		printf("Spinning");
+		nh.spinOnce();
+		Sleep(sleepTimeMillis);
+		i++;
+	}
 
-    auto Start = std::chrono::high_resolution_clock::now();
-    printf("Go robot go!\n");
-    int y = 0;
-    while (1)
-    {
-       /* y++;
-        auto End = std::chrono::high_resolution_clock::now();
-        twist_msg.linear.x = 5.1;
-        twist_msg.linear.y = y;
-        twist_msg.linear.z = 0;
-        twist_msg.angular.x = 0;
-        twist_msg.angular.y = 0;
-        twist_msg.angular.z = -1.8;
-        cmd_vel_pub.publish(&twist_msg);*/
-        nh.spinOnce();
-
-        //auto elapsed = std::chrono::duration_cast<std::chrono::milliseconds>(End - Start).count();
-        //printf("%d\n", elapsed);
-        //
-        //if (elapsed >= 1000) {
-        //    break;
-        //}
-        Sleep(100);
-    }
-
-    printf("All done!\n");
-    return 0;
+	printf("All done!\n");
+	return 0;
 }

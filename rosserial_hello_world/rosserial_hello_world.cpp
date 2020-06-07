@@ -22,15 +22,16 @@
 // rosserial_hello_world.cpp : Example of sending command velocities from Windows using rosserial
 //
 #include <string>
+#include <sstream>
 #include <iostream>
 #include <stdio.h>
 #include <chrono>
 #include "ros.h"
 #include <ros/time.h>
 #include <geometry_msgs/Twist.h>
-#include <geometry_msgs/PoseStamped.h>
 #include <geometry_msgs/PoseArray.h>
-#include <geometry_msgs/PoseWithCovarianceStamped.h>
+#include <std_msgs/String.h>
+#include <std_msgs/Time.h>
 #include <tf/tf.h>
 #include <tchar.h>
 #include <windows.h>
@@ -38,10 +39,9 @@
 
 using std::string;
 
-void estimated_pose_callback(const geometry_msgs::PoseWithCovarianceStamped& pose)
+void time_callback(const std_msgs::Time& msg)
 {
-	printf("Received pose %f, %f, %f\n", pose.pose.pose.position.x,
-		pose.pose.pose.position.y, pose.pose.pose.position.z);
+	std::cout << " -> Received: " << std::to_string(msg.data.sec) <<"." << std::to_string(msg.data.nsec);
 }
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -55,17 +55,20 @@ int _tmain(int argc, _TCHAR* argv[])
 	/*SENDING*/
 	printf("Advertising cmd_vel message\n");
 	RobotPosition robotPosition;
-	geometry_msgs::PoseStamped poseStamped;
 	geometry_msgs::Pose pose;
 	geometry_msgs::PoseArray poseArray;
+	std_msgs::String msg;
 	//ros::Publisher cmd_vel_pub("husky_velocity_controller/cmd_vel", &box_marker);
+	//ros::Subscriber <std_msgs::Time> poseSub("estimated_pose", &time_callback);
+	ros::Publisher msgPublisher("chatter", &msg);
+	ros::Subscriber <std_msgs::Time> msgSub("callback", &time_callback);
 	ros::Publisher cmd_vel_pub("position", &poseArray);
-	ros::Subscriber <geometry_msgs::PoseWithCovarianceStamped> poseSub("estimated_pose", &estimated_pose_callback);
-	nh.subscribe(poseSub);
+	nh.subscribe(msgSub);
 	//ros::Publisher cmd_vel_pub("cmd_vel", &twist_msg);
 	nh.advertise(cmd_vel_pub);
+	nh.advertise(msgPublisher);
 	printf("Go robot go!\n");
-	int sleepTimeMillis = 10;
+	int sleepTimeMillis = 500;
 	double timeElapsed = 0;
 	poseArray.poses_length = 1;
 	int i = 0;
@@ -80,10 +83,21 @@ int _tmain(int argc, _TCHAR* argv[])
 		poseArray.header.frame_id = "map";
 		geometry_msgs::Pose* poses = new geometry_msgs::Pose[1];
 		poses[0] = pose;
-		poseArray.poses = poses;		
-
+		poseArray.poses = poses;
+		const auto p1 = std::chrono::system_clock::now();
+		auto sendTime = std::chrono::duration_cast<std::chrono::seconds>(p1.time_since_epoch()).count();
+		auto nano = std::chrono::duration_cast<std::chrono::nanoseconds>(p1.time_since_epoch()).count();
+		std::string sec = std::to_string(sendTime);
+		std::string ns = std::to_string(nano);
+		std::string data = ns;
+		//msg.data = "Message";
+		msg.data = data.c_str();
 		cmd_vel_pub.publish(&poseArray);
-		printf("Spinning");
+		msgPublisher.publish(&msg);
+		std::cout << std::endl;
+		std::cout << "Sending: ";
+		std::cout << nano;
+		//printf("Spinning");
 		nh.spinOnce();
 		Sleep(sleepTimeMillis);
 		i++;

@@ -39,9 +39,15 @@
 
 using std::string;
 
-void time_callback(const std_msgs::Time& msg)
+void time_callback(const std_msgs::String& msg)
 {
-	std::cout << " -> Received: " << std::to_string(msg.data.sec) <<"." << std::to_string(msg.data.nsec);
+	const auto p1 = std::chrono::system_clock::now();
+	auto sendTime = std::chrono::duration_cast<std::chrono::seconds>(p1.time_since_epoch()).count();
+	auto nano = std::chrono::duration_cast<std::chrono::milliseconds>(p1.time_since_epoch()).count();
+	std::string sec = std::to_string(sendTime);
+	std::string millis = std::to_string(nano);
+	//std::cout << " -> Received: " << std::to_string(msg.data.sec) <<"." << std::to_string(msg.data.nsec) << " -> at: " << millis;
+	std::cout << " -> Received: " << msg.data << " -> at: " << millis;
 }
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -61,18 +67,18 @@ int _tmain(int argc, _TCHAR* argv[])
 	//ros::Publisher cmd_vel_pub("husky_velocity_controller/cmd_vel", &box_marker);
 	//ros::Subscriber <std_msgs::Time> poseSub("estimated_pose", &time_callback);
 	ros::Publisher msgPublisher("chatter", &msg);
-	ros::Subscriber <std_msgs::Time> msgSub("callback", &time_callback);
+	ros::Subscriber <std_msgs::String> msgSub("callback", &time_callback);
 	ros::Publisher cmd_vel_pub("position", &poseArray);
 	nh.subscribe(msgSub);
 	//ros::Publisher cmd_vel_pub("cmd_vel", &twist_msg);
 	nh.advertise(cmd_vel_pub);
 	nh.advertise(msgPublisher);
 	printf("Go robot go!\n");
-	int sleepTimeMillis = 500;
+	int sleepTimeMillis = 1;
 	double timeElapsed = 0;
 	poseArray.poses_length = 1;
 	int i = 0;
-	while (1)
+	while (i < 100)
 	{
 		robotPosition = getTrajectoryPoint(timeElapsed);
 		timeElapsed += sleepTimeMillis;
@@ -86,17 +92,16 @@ int _tmain(int argc, _TCHAR* argv[])
 		poseArray.poses = poses;
 		const auto p1 = std::chrono::system_clock::now();
 		auto sendTime = std::chrono::duration_cast<std::chrono::seconds>(p1.time_since_epoch()).count();
-		auto nano = std::chrono::duration_cast<std::chrono::nanoseconds>(p1.time_since_epoch()).count();
+		auto millis = std::chrono::duration_cast<std::chrono::milliseconds>(p1.time_since_epoch()).count();
 		std::string sec = std::to_string(sendTime);
-		std::string ns = std::to_string(nano);
-		std::string data = ns;
+		std::string ms = std::to_string(millis);
+		std::string myMsg = "Message " + std::to_string(i);
 		//msg.data = "Message";
-		msg.data = data.c_str();
+		msg.data = myMsg.c_str();
 		cmd_vel_pub.publish(&poseArray);
 		msgPublisher.publish(&msg);
 		std::cout << std::endl;
-		std::cout << "Sending: ";
-		std::cout << nano;
+		std::cout << "Sending: " << myMsg.c_str() << " at: " << ms;
 		//printf("Spinning");
 		nh.spinOnce();
 		Sleep(sleepTimeMillis);
